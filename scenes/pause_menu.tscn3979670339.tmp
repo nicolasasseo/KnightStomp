@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://baqsjjr2v808k"]
+
+[ext_resource type="Script" uid="uid://bqiom00lo31o7" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+
+[sub_resource type="Theme" id="Theme_l6cm7"]
+Button/font_sizes/font_size = 16
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_n87rw")
+
+[node name="Title" type="Label" parent="."]
+offset_right = 1920.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 300
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_top = 500.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = SubResource("Theme_l6cm7")
+
+[node name="MainButtons" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Continue" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "CONTINUE"
+
+[node name="Restart" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "RESTART LEVEL"
+
+[node name="MainMenu" type="Button" parent="CenterContainer/MainButtons"]
+process_mode = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "MAIN MENU"
+
+[node name="Quit" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "QUIT"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1000
+offset_right = 1907.0
+offset_bottom = 1082.0
+mouse_filter = 2
+color = Color(0.92549, 0.556863, 0.321569, 1)
+
+[connection signal="pressed" from="CenterContainer/MainButtons/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CenterContainer/MainButtons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CenterContainer/MainButtons/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CenterContainer/MainButtons/Quit" to="." method="_on_quit_pressed"]
